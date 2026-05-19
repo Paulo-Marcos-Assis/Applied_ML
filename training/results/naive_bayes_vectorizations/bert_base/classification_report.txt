@@ -1,0 +1,11 @@
+CLASSIFICATION REPORT - NAIVE BAYES - BERT-BASE
+============================================================
+
+              precision    recall  f1-score   support
+
+    Negative     0.8428    0.9504    0.8933       141
+    Positive     0.9431    0.8227    0.8788       141
+
+    accuracy                         0.8865       282
+   macro avg     0.8929    0.8865    0.8861       282
+weighted avg     0.8929    0.8865    0.8861       282

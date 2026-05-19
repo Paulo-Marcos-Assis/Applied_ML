@@ -1,0 +1,11 @@
+CLASSIFICATION REPORT - RANDOM FOREST - BERT-LARGE
+============================================================
+
+              precision    recall  f1-score   support
+
+    Negative     0.8792    0.9291    0.9034       141
+    Positive     0.9248    0.8723    0.8978       141
+
+    accuracy                         0.9007       282
+   macro avg     0.9020    0.9007    0.9006       282
+weighted avg     0.9020    0.9007    0.9006       282

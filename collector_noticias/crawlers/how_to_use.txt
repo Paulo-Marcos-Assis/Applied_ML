@@ -1,0 +1,12 @@
+For the ones that use the binary search:
+
+cd /home/paulo/CascadeProjects/Applied_ML/collector_noticias/crawlers
+
+# Scrappear TUDO (auto-detect + scraping completo)
+python3 scrape_cartacapital.py
+
+# Scrappear número específico de páginas
+python3 scrape_cartacapital.py --max-pages 50 --no-auto-detect
+
+# Começar de uma página específica
+python3 scrape_cartacapital.py --start-page 10 --max-pages 20 --no-auto-detect

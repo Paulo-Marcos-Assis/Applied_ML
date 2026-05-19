@@ -1,0 +1,17 @@
+FIRTST THIND TO DO FOR TRAINING THE MODEL ->
+
+HAVE A DATASET SPLIT (TRAINING / DEVELOPMENT / TESTING) 
+
+[TRAINING & DEVELOPMENT 80% of the data];
+[TESTING: 20% of the data]
+
+        **DATASET BUILDING**
+
+we have 1050 fraud cases (positive cases), so, first, we'll need the negative data cases, around 1000 cases also. 
+Let's found them
+13/05/2026
+
+
+**SEPARATE FRAUD CASES AND NON-FRAUD CASES**
+
+For that, we'll need to find the script that process each news article and, with the LLM usage, classify it as fraud or not fraud 

@@ -1,0 +1,11 @@
+CLASSIFICATION REPORT - SVM - BERT-LARGE
+============================================================
+
+              precision    recall  f1-score   support
+
+    Negative     0.9195    0.9716    0.9448       141
+    Positive     0.9699    0.9149    0.9416       141
+
+    accuracy                         0.9433       282
+   macro avg     0.9447    0.9433    0.9432       282
+weighted avg     0.9447    0.9433    0.9432       282

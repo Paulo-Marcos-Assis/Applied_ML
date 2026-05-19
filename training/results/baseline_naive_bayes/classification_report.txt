@@ -1,0 +1,11 @@
+RELATÓRIO DE CLASSIFICAÇÃO - BASELINE NAIVE BAYES + TF-IDF
+============================================================
+
+              precision    recall  f1-score   support
+
+    Negativo       0.94      0.98      0.96       141
+    Positivo       0.98      0.94      0.96       141
+
+    accuracy                           0.96       282
+   macro avg       0.96      0.96      0.96       282
+weighted avg       0.96      0.96      0.96       282

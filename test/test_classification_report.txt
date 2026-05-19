@@ -1,0 +1,11 @@
+CLASSIFICATION REPORT - TEST SET - TF-IDF + SVM
+============================================================
+
+              precision    recall  f1-score   support
+
+    Negative     0.9613    0.9831    0.9721       177
+    Positive     0.9826    0.9602    0.9713       176
+
+    accuracy                         0.9717       353
+   macro avg     0.9719    0.9716    0.9717       353
+weighted avg     0.9719    0.9717    0.9717       353

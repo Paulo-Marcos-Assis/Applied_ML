@@ -1,0 +1,11 @@
+CLASSIFICATION REPORT - SVM - BERT-BASE
+============================================================
+
+              precision    recall  f1-score   support
+
+    Negative     0.9296    0.9362    0.9329       141
+    Positive     0.9357    0.9291    0.9324       141
+
+    accuracy                         0.9326       282
+   macro avg     0.9326    0.9326    0.9326       282
+weighted avg     0.9326    0.9326    0.9326       282

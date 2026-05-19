@@ -1,0 +1,11 @@
+CLASSIFICATION REPORT - RANDOM FOREST - BERT-BASE
+============================================================
+
+              precision    recall  f1-score   support
+
+    Negative     0.9048    0.9433    0.9236       141
+    Positive     0.9407    0.9007    0.9203       141
+
+    accuracy                         0.9220       282
+   macro avg     0.9228    0.9220    0.9220       282
+weighted avg     0.9228    0.9220    0.9220       282

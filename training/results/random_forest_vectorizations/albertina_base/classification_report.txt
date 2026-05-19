@@ -1,0 +1,11 @@
+CLASSIFICATION REPORT - RANDOM FOREST - ALBERTINA-BASE
+============================================================
+
+              precision    recall  f1-score   support
+
+    Negative     0.8926    0.9433    0.9172       141
+    Positive     0.9398    0.8865    0.9124       141
+
+    accuracy                         0.9149       282
+   macro avg     0.9162    0.9149    0.9148       282
+weighted avg     0.9162    0.9149    0.9148       282

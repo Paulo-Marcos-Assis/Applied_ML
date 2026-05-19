@@ -1,0 +1,11 @@
+CLASSIFICATION REPORT - RANDOM FOREST - FASTTEXT
+============================================================
+
+              precision    recall  f1-score   support
+
+    Negative     0.9067    0.9645    0.9347       141
+    Positive     0.9621    0.9007    0.9304       141
+
+    accuracy                         0.9326       282
+   macro avg     0.9344    0.9326    0.9326       282
+weighted avg     0.9344    0.9326    0.9326       282
