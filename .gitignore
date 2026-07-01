@@ -67,3 +67,6 @@ collector_noticias/scraped/
 
 # FastText embeddings
 vectorization/fasttext/models/
+
+# Paper directory (local only)
+Paper/
