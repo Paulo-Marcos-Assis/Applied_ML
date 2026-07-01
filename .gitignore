@@ -70,3 +70,6 @@ vectorization/fasttext/models/
 
 # Paper directory (local only)
 Paper/
+
+# Text files (local only)
+*.txt

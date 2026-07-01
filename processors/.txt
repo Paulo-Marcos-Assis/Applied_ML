@@ -1,7 +1,0 @@
-consolidate
-
-# Processar todos os arquivos
-python processors/feature_extractor_companies.py
-
-# Modo teste (apenas 5 arquivos)
-python processors/feature_extractor_companies.py --test

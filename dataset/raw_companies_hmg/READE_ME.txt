@@ -1,4 +1,0 @@
-hmg_ceos - table - estabelecimento
-
-SELECT * FROM licitacoes.estabelecimento
-ORDER BY id_estabelecimento ASC 
