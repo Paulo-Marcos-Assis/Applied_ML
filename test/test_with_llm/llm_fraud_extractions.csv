@@ -1,0 +1,95 @@
+news_index,title_clean,true_label,llm_label,empresas_envolvidas,tipos_de_fraude,execution_time_s
+5,mp investiga licitacoes suposto superfaturamento contratos firmados scpar,1,1,Alfa Imunização EIRELI,superfaturamento; dispensa ilegal de licitação,39.11
+8,defesa ze trovao critica investigacao destinacao emendas pix deputado,1,1,Empresa Qualidade Mineracao,superfaturamento; licitacoes direcionadas,27.27
+12,lojas americanas assumem fraude gestao gerou rombo bilionario varejista relatorio exime trio bilionarios donos empresa,1,1,Lojas Americanas,fraude em contratação; superfaturamento,39.22
+18,chefe mpsc revela quebra sigilo caso respiradores fantasmas,1,1,Veigamed,fraude em licitacao; superfaturamento; lavagem de dinheiro,45.44
+29,dono serrana confirma pagamento propina agentes publicos negam,1,1,Serrana Engenharia,pagamento de propina,9.29
+31,ridauto sigilo quebrado cpmi suposto lobby empresa pandemia,1,1,Biogeoenergy S.A.; Hempcare Ltda.,fraude em venda de equipamentos; desvio de recursos publicos,24.85
+37,tras investigacao apura lavagem dinheiro zona azul sc,1,1,Dom Parking,lavagem de dinheiro; peculato; associacao criminosa,46.07
+44,emendas pix zanatta ze trovao pagam contratos suspeitos fraude,1,1,empresa Mira,fraude em licitacao; superfaturamento,67.84
+48,piloto mauro mattosinho resolveu contar sabia,1,1,Tap,adulteracao combustiveis; lavagem de dinheiro,32.09
+51,mensageiro prefeito renovou contrato serrana dia prestou depoimento,1,1,Serrana Prestaservicos Ltda.,corrupção; superfaturamento,37.08
+59,saida akira sato novo chefe policia civil sc devem anunciados nesta segunda,1,1,CEON Tecnologia Inteligência Ltda.,fraude em licitacao,39.18
+62,ex senador paulo bauer denunciado lava jato corrupcao passiva,1,1,Hypermarcas S.A.,corrupção passiva,24.44
+63,ministro secom pagou multa encerrar acao sobre fraudes diz site,1,1,Leiaute Comunicação S.A.,subcontratação viciosa; fraudes em processos de contratação,46.11
+65,empresas sonegam brasil rombo chega r 200 bilhoes ano,1,1,Refit,lavagem de dinheiro; concorrência desleal,74.37
+67,megaoperacao contra fraude licitacoes prefeituras cumpre mandados 17 cidades sc,1,1,,fraude em licitacao,38.27
+70,gaeco deflagra operacao verus dominus comarca rio sul,1,1,prefeitura municipal; secretaria saude rio sul,fraude em licitacao; desvio de recursos publicos,23.57
+72,governo compra respiradores weg nao funcionam,1,1,WEG,superfaturamento; desvio de recursos públicos,12.29
+73,acionistas lojas americanas pedem lemann sicupira telles empresa,1,1,Lojas Americanas,fraude contabil; gestao fraudulenta,18.66
+74,deputados autorizam governo rj usar aposentadoria servidores pagar divida,1,1,,fraude em licitacao; superfaturamento,44.31
+81,flavio bolsonaro entra radar cpmi inss ligacao nucleo fraudes,1,1,Leticia Caetano Sociedade Individual de Advogacia,desvios de recursos publicos,29.79
+82,operacao mensageiro stj nega habeas corpus prefeito capivari baixo segue preso,1,1,Serrana Engenharia,fraude em licitacao; corrupcao,23.31
+83,justica afasta antonio ceron prefeitura lages conceder prisao domiciliar,1,1,,fraude em licitacao; corrupcao; organizacao criminosa; lavagem de dinheiro,16.26
+94,operacao alcatraz 16 pessoas sao monitoradas meio tornozeleiras eletronicas,1,1,Neoway,superfaturamento; contratos pagamentos propina; licitações fraudulenta prorrogacao contratual,46.9
+98,damares promoveu desinformacao sobre cannabis defende empresa ligada fraudes inss,1,1,World Cannabis,corrupção; lavagem de dinheiro,44.13
+99,acusados pf chefiar esquema pcc enviaram propina dinheiro ciro nogueira diz testemunha,1,1,Copape; ASTER,fraude fiscal; lavagem de capitais,76.6
+114,ia dar zebra presidente autarquia diz alertou prefeito corupa sobre serrana,1,1,Serrana Engenharia Ltda.,duplicidade de contratações; pagamento duplicado de serviços,28.29
+115,indicado lucas esmeraldino presidente scpar holding deixa cargo,1,1,SCPAR Holding S.A.,superv superfaturamento; dispensao de licitacao,39.5
+118,mp ve associacao criminosa falsidade ideologica manipulacao insider trade ex diretores americanas,1,1,Americanas,fraude em balanço financeiro; apropriação indebita; peculato,34.26
+119,justica nega habeas corpus prefeito tres barras investigado operacao mensageiro,1,1,SAMASA Serviço Autônomo Municipal de Água e Saneamento Ambiental - Tres Barras,superfaturamento; propina,34.19
+120,apos operacao policial dentro centro administrativo sc 401 cai secretario estado,1,1,Veigamed,fraude em licitacao; corrupcao,19.78
+121,ex ceo americanas afirmando principais acionistas participavam ativamente gestao empresa cpi nao convoca novos depoiment,1,1,Americanas,fraude em licitacao; desvio de recursos publicos,36.66
+123,fraude licitacao agente publico empresario ressarcirao erario r 100 mil imprensa poder judiciario santa catarina,1,1,empresa re,fraude em licitacao,28.16
+128,decisao dino expoe 2a vez transacao seif empresa investigada fraudes saude,1,1,IDEAS Instituição de Desenvolvimento Ensino Assistência à Saúde,corrupção; desvio de recursos públicos,45.4
+130,lojas americanas mpf quer extradicao ex ceo vive espanha,1,1,Lojas Americanas S.A.,fraude bilionária,25.13
+131,imobiliaria jaragua sul aplicava golpes ultrapassam r 1 milhao,1,1,Imobiliária Jaragua Sul Norte,estelionato,20.77
+134,imperio donald trump pode ruir processo fraude us 2 bilhoes,1,1,Organização Trump,fraude em ativos; fraudes financeiras,28.14
+135,operacao mensageiro prefeitura sul vai reavaliar contratos,1,1,XYZ Engenharia S.A.,fraude em licitacao,11.73
+136,vendedores denunciam terem sido forcados vender cartao itau esquema milionario,1,1,Marisa S.A.; Ponto Frió S.A.; Extra S.A.,venda casada; cobrança de serviços não solicitados,116.68
+140,apos alvo operacao mensageiro prefeito ibirama pede afastamento cargo 90 dias,1,1,,fraude em licitacao; corrupcao ativa; corrupcao passiva; organizacao criminosa; lavagem de dinheiro,26.81
+142,empresa participou fraude licitacoes devolve r 55 milhoes sc,1,1,Neoway Tecnologia S.A.,fraude em licitacao,24.56
+145,alfa imunizacao alvo operacao porto sao francisco sul,1,1,alfa imunizacao servicos eireli,lavagem de dinheiro; superfaturamento,28.4
+146,empresa investigada suspeita fraude licitacoes softwares gestao governo moises,1,1,,fraude em licitacao,8.03
+152,empresa fornecia merenda rotulo irregular escolas joinville aceita acordo,1,1,Nutriplus Alimentação Tecnologia Ltda.; Vieira Couto Dist. Produtos Alimentícios Ltda.,superfaturamento; rotulagem irregular,20.47
+154,fraudes sonegacao divida r 26 bi entenda caso refit 3 pontos,0,1,REFIT,fraudes fiscais; sonegação de impostos,56.89
+159,irani dois empresarios denunciados mpsc sao condenados fraude licitacao,1,1,Dario Francisco Bresola; Vanderlei Biagentini,fraude em licitacao,18.44
+167,novo executivo americanas pede atencao empresa evitar erros,1,1,Americanas,fraudes contábeis; inconsistências fiscais,37.4
+168,fraude americanas fato relevante coloca conselho administracao papel vitima complica caminho reparo judicial minoritario,1,1,Lojas Americanas,fraude em licitacao; corrupcao; superfaturamento,44.24
+171,desvio r 8 milhoes 18 dias ex funcionario gigante ramo suplementos investigado fraude compra carros luxo,1,1,Growth Supplements,furto mediante fraude; lavagem de dinheiro,27.16
+175,operacao sc mira esquema piramide cotas imobiliarias 5 mil lesados,1,1,VR Brasil,estelionato,26.16
+178,governo sc compra r 30 milhoes 500 ventiladores pulmonares weg,1,1,WEG Drives Controls Automacao Ltda.,superfaturamento,31.06
+179,bens douglas borba outros sete investigados estao indisponiveis,1,1,Veigamed,licitatorios; corrupcao ativa; corrupcao passiva; peculato; lavagem de dinheiro,28.76
+182,diretoria scpar porto sao francisco sul pede exoneracao,1,1,SCPAR Porto São Francisco Sul S.A.,superfaturamento; dispensa de licitação,16.09
+190,scpar terceiro contrato dispensa licitacao processo contratacao,1,1,CIDASC; SCPAR,dispensa de licitação,91.12
+191,governo santa catarina destina r 1 bi ensino superior privado,1,1,,fraude em bolsas estudantis; ocultação de informações,45.04
+194,empresario sc condenado venda clandestina lotes imobiliarios,1,1,LM II Loteamentos S.A.,venda clandestina de lotes imobiliários,54.66
+195,bilionario brasileiro lista forbes vira alvo inquerito mpt piaui apos denuncias funcionarios,1,1,Granja Faria,irregularidades contratos; falta de pagamentos salários benefícios funcionarios,23.96
+197,grupo investidores bitcoin lesado empresa pede ressarcimento r 7 bi acao justica,1,1,Atlas Quantum,piramide financeira; golpe,44.56
+201,grampos telefonicos detalhes investigacao colocou pai filho cadeia,1,1,ALFA Imunização S.A.,fraude em licitacao; superfaturamento,58.76
+204,empresario aponta suposta fraude licitacao servico jardinagem criciuma,1,1,Casa Flores ME,fraude em licitacao,36.73
+208,empresa ligada investigacao corrupcao prendeu prefeitos sc manifesta,1,1,Grupo Serrana,corrupção; fraude em licitação; organização criminosa; lavagem de dinheiro,25.51
+215,inss promete ressarcir beneficiarios lesados descontos irregulares ate fim 2025,1,1,,fraude em licitacao; lavagem de dinheiro,38.52
+216,agencia governo bolsonaro fez relatorio questionando lisura fortuna luciano hang,1,1,Havan,crescimento lisura questionavel; pratica agiotagem,23.66
+220,pcc ligado 3 nomes lista principais alvos carbono oculto,1,1,mohamad mourad; strawberry lojas conveniencias ltda.,lavagem de dinheiro; fraudes fiscais; estelionato,61.46
+222,cpi rio mathias conheca citados indicios erro cada defesas,1,1,Parallela; Motta Junior Ramos Terraplanagem,fraude em licitacao; superfaturamento,118.08
+230,vara empresarial rio suspende decisao permitia acesso mails executivos funcionarios rede americanas,1,1,Rede Americanas,desvio de recursos publicos,38.95
+238,operacao mira grupo especializado furto petroleo fazenda bicheiros mandado sc,1,1,Transpetro,furto de petróleo; lavagem de dinheiro,26.11
+239,gaeco mira esquema fraudes prefeituras baixada fluminense,1,1,Nutrifoods Refeicoes Ltda.,fraude em licitacao; cartel,21.56
+240,justica sc mantem bloqueio r 4 6 milhoes caso respiradores,1,1,Veigamed,superfaturamento,19.92
+241,prefeito imarui condenado 22 anos prisao operacao mensageiro,1,1,Serrana Engenharia,fraude em licitacao,28.51
+243,pmf notificada sobre novo edital coleta lixo capital,1,1,FG Soluções Ambientais Ltda.; AJS Ltda.,fraude em licitacao,19.77
+249,cpi investigara irregularidades semasa lages apos operacao mensageiro,1,1,,fraude em licitacao; corrupcao; superfaturamento,21.81
+250,empresas ex secretario sao condenados devolver r 2 2 milhoes fraudes saude sc,1,1,Neoway S.A.; Actvs Software S.A.,fraude em licitacao; superfaturamento,24.93
+254,operacao oxigenio forca tarefa busca r 33 milhoes,1,1,Veigamed,lavagem de dinheiro; desvio de recursos publicos,37.47
+258,cpi americanas termina identificar autores fraude r 40 bilhoes,1,1,Americanas,fraude em contas; maior escândalo financeiro do Brasil,29.36
+279,procuradoria geral estado contesta oficio sobre contrato veigamed,1,1,Veigamed,fraude em contrato; desvio de recursos públicos,22.21
+280,mp deve oferecer denuncia contra suspeitos crimes porto sao francisco sul,1,1,ALFA IMUNIZACAO EIRELI,fraude em licitacao; superfaturamento,41.97
+281,grupo fit refinaria manguinhos alvo operacao suspeita sonegacao,1,1,Refit Refinaria Manguinhos S.A.,sonegação fiscal; fraudes aduaneiras,29.75
+289,ex ceo lojas americanas diz empresa esquema atrasar pagamentos fornecedores forcar geracao caixa,1,1,Lojas Americanas,atraso de pagamentos a fornecedores; geração artificial de caixa,30.54
+290,antonio rodrigues prefeito balneario barra sul vira reu operacao mensageiro,1,1,Serrana Engenharia,fraude em licitacao; corrupcao,20.43
+296,hospital ararangua alvo operacao pf apura desvios recursos publicos,1,1,Hospital Regional Araranguá,desvio de recursos publicos,24.93
+297,secretarios prefeitura florianopolis sao alvos operacao policia civil,1,1,Amazon Fort,fraude em licitacao; lavagem de dinheiro,48.93
+300,policia civil realiza operacao investigar fraude licitacao sao jose pcsc,1,1,XYZ Engenharia S.A.,fraude em licitacao,20.72
+301,pf prende 14 pessoas quadrilha criou 330 empresas fachada,1,1,,fraude em licitacao; superfaturamento; lavagem de dinheiro,22.73
+305,lira indicado r 32 9 mi orcamento secreto apadrinhar compra kits robotica escolas alagoas,1,1,MEGALIC LTDA.,superfaturamento,30.91
+309,licitacao suspensa centro eventos balneario camboriu vicios origem,1,1,Quality Empreendimentos Ltda.,fraude em licitacao,17.57
+311,denunciados mpf operacao alcatraz comentam acusacoes,1,1,intuitiva tecnologia ltda.; sao mauricio rosa barbosa,corrupção; peculato; fraudes em licitações; superfaturamento,38.32
+316,policia civil indicia quatro pessoas crimes contra administracao publica operacao juntando pecas mafra pcsc,1,1,sociedades empresariais,fraude em licitacao; corrupcao,20.29
+321,gaeco deflagra operacao lata velha,1,1,,fraude em licitacao,14.6
+324,abilio brunini contrata r 656 mil veterinario participou campanha eleitoral,1,1,Clinica Veterinaria Mato Grosso Ltda.,favorecimento indevido; desvios de recursos públicos,51.94
+339,relatorio paralelo cpmi inss pede indiciamento 130 aponta fraude bilionaria,1,1,,fraude em licitacao; superfaturamento; lavagem de dinheiro,48.09
+341,caso respiradores tce sc pede manifestacao envolvidos compra,1,1,Veigamed,fraude em licitacao; superfaturamento,38.48
+344,deputada pede investigacao sobre reuniao rueda chefe esquema pcc,1,1,União Brasil S.A.,lavagem de dinheiro; esquema de lavagem de dinheiro,26.6
+349,exclusivo naatz diz deputado fez pressao compra respiradores,1,1,Veigamed,pressão na compra de equipamentos,31.84
+351,cliente fake policia civil investiga grupo denunciado fraude blumenau,1,1,Cooperativa Credito Vale Itajai,furto mediante fraude,14.65

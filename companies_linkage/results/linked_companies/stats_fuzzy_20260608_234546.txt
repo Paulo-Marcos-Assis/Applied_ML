@@ -1,0 +1,16 @@
+======================================================================
+RELATÓRIO DE VINCULAÇÃO DE EMPRESAS
+======================================================================
+
+Data: 2026-06-08 23:45:46
+Método: FUZZY
+
+total_news: 175
+news_with_companies: 175
+total_companies_mentioned: 686
+companies_matched: 616
+companies_not_matched: 70
+multiple_matches: 573
+exact_matches: 137
+
+Taxa de sucesso: 89.8%

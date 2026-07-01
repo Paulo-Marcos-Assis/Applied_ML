@@ -1,0 +1,388 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Fraud Detection in Brazilian News Using Machine Learning\\
+\thanks{Acknowledgements to the Public Prosecutor's Office of Santa Catarina (MPSC) for funding this research through the Céos Project}
+}
+
+\author{
+\IEEEauthorblockN{Gabriel V. Heisler}
+\IEEEauthorblockA{\textit{Céos Project} \\
+\textit{Federal University of Santa Catarina}\\
+Florianópolis, Brazil \\
+gvheisler@gmail.com}
+\and
+\IEEEauthorblockN{Paulo M. de Assis}
+\IEEEauthorblockA{\textit{Céos Project} \\
+\textit{Federal University of Santa Catarina}\\
+Florianópolis, Brazil \\
+paulo.marcos@ufsc.br}
+}
+
+\maketitle
+
+\begin{abstract}
+
+Automated monitoring of journalistic content can support anti-fraud and anti-corruption activities, but the volume of online news makes manual screening impractical. This paper presents a reproducible pipeline for binary fraud-related news detection in Brazilian Portuguese. We curate a balanced dataset of 1,764 articles (882 fraud-related and 882 non-fraud) collected from 33 news portals between 2020 and 2025. Positive instances were initially weakly annotated with large language model assistance and subsequently validated, while negative instances were selected via stratified sampling; additional cleaning reduced the dominance of a single recurring case (20.57\% to 5.87\%), improving thematic diversity. We compare 18 model configurations combining four representation families (TF-IDF $n$-grams, FastText, and embeddings from Portuguese transformer encoders) with three classifiers (Naive Bayes, linear SVM, and Random Forest). The best model, TF-IDF with a linear SVM, achieves an F1-score of 0.9783 on a development set and 0.9711 on a held-out test set after duplicate removal (334 articles), with ROC-AUC of 0.9921. Results show that sparse lexical representations remain highly effective for specialized Portuguese news classification, providing a strong baseline for operational fraud monitoring systems.
+
+\end{abstract}
+
+\begin{IEEEkeywords}
+Fraud Detection, Text Classification, Machine Learning, Natural Language Processing, Portuguese NLP, Data Cleaning, Exploratory Data Analysis
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+Investigative journalism and routine news reporting can play a decisive role in exposing irregularities and triggering accountability mechanisms. Policy and governance reports highlight that, in many contexts, media coverage surfaces early signals of corruption and fraud and helps drive subsequent institutional action \cite{oecd2018media, unodc2014reporting}. For investigative and monitoring agencies, access to timely information that can reveal potential fraud is critical, yet the scale and velocity of online publication makes manual screening impractical \cite{kariuki2017monitoring}. In addition, news narratives often provide contextual details that are not readily available in structured government databases, such as names of intermediaries, companies, and recurring actors across cases.
+
+In this work, we address the problem of automatically classifying Brazilian Portuguese news articles as fraud-related or not. This formulation supports downstream workflows in which high-precision alerts are preferable, reducing the burden on analysts who must triage large volumes of content. Prior research has explored automated auditing and fraud-related monitoring using data-driven methods \cite{santos2025mapping}, and recent work has shown that machine learning can successfully filter Portuguese news streams for specific fraud contexts such as public procurement \cite{assis2025classification}. Our focus is broader: we target fraud-related news that may involve corporate actors, public-sector misconduct, or mixed schemes, aiming at a general-purpose detector for fraud-related reporting.
+
+Our approach follows standard text classification practice by comparing sparse lexical representations and dense neural embeddings. TF-IDF weighting remains a strong and widely used baseline for document classification \cite{salton1988term}, and linear support vector machines are particularly effective in high-dimensional sparse feature spaces \cite{cortes1995svm}. At the same time, transformer-based encoders have become a dominant paradigm for representation learning in NLP \cite{devlin2019bert}, including models trained for Brazilian Portuguese such as BERTimbau \cite{souza2020bertimbau}. We therefore evaluate multiple vectorization strategies (TF-IDF $n$-grams, FastText embeddings \cite{bojanowski2017enriching}, and transformer-based embeddings) combined with classical classifiers.
+
+To enable reliable supervised learning, we curate a balanced dataset of 1,764 articles (882 positive and 882 negative) spanning 33 sources and covering the period from 2020 to 2025. Positive instances were initially produced with large language model assistance and subsequently validated, while negatives were sampled to preserve source and length distributions; to reduce the risk of overfitting to a single highly recurrent case, we further cleaned the corpus, reducing a dominant theme from 20.57\% to 5.87\%. We report results for 18 model combinations and show that TF-IDF with a linear SVM yields robust performance, reaching an F1-score of 0.9711 on a held-out test set after duplicate removal, with a development--test gap below 1\%. These results provide a strong baseline for operational fraud monitoring in Portuguese news and motivate future work on domain adaptation and richer features.
+
+
+\section{Related Work}
+A systematic review by \cite{santos2025mapping} synthesizes data-driven approaches to fraud detection in public procurement, showing the maturity of supervised and semi-supervised methods in structured settings. In parallel, recent work has explored the use of journalistic content as an alternative source for early warning signals. In Portuguese, \cite{assis2025classification} demonstrated that classical machine learning can successfully filter news streams for public procurement fraud. Our work extends this line by targeting broader fraud-related reporting beyond a single domain and by emphasizing a fully reproducible pipeline that begins at data acquisition and ends with a validated held-out evaluation.
+
+Since our dataset is built from raw web news, data acquisition and monitoring are central. Souza and Dorneles introduced CONO, a specialized crawler to collect and filter corruption-related news in Santa Catarina \cite{souza2025cono}. More generally, web crawling has been studied as a systems and information retrieval problem, with established design considerations for coverage, robustness, and efficiency \cite{olston2010webcrawling}. In this work, we similarly adopt a configuration-driven multi-portal crawler, motivated by the heterogeneous structure and date formats of news sites, and we complement collection with iterative dataset auditing.
+
+Another methodological aspect is that building labeled datasets from real-world news often requires weak supervision and careful quality control. Label noise is known to affect both performance estimates and model selection, motivating explicit validation and cleaning procedures \cite{frenay2014labelnoise}. Weak supervision frameworks such as Snorkel formalize the combination of noisy labeling sources and heuristics into training labels, providing a principled perspective on scalable annotation \cite{ratner2017snorkel}. In addition, information extraction methods, including named entity recognition, can support monitoring pipelines by structuring actors and organizations mentioned in news narratives \cite{fang2025chineseNER}, although our focus here remains binary classification.
+
+From a modeling perspective, our experimental design follows established practice in automated text categorization \cite{sebastiani2002textcategorization} by comparing sparse lexical representations and dense contextual embeddings under a controlled protocol. Linear SVMs have a strong track record in high-dimensional text categorization tasks \cite{joachims1998textcategorization}, which motivates our classical baselines and helps contextualize the competitiveness of TF-IDF with linear decision boundaries in specialized domains. Finally, we include an LLM-based classifier as a comparative baseline, motivated by the broader literature on instruction- and example-conditioned language models \cite{brown2020fewshot}, while explicitly reporting the practical constraints observed in local inference.
+
+\section{Methodology}
+
+\subsection{End-to-end pipeline overview}
+
+This work follows an end-to-end pipeline that starts from raw online news and ends with a validated fraud-related news detector. We first collect and consolidate Brazilian Portuguese news articles from multiple portals. We then curate and validate a binary dataset, using large language model assistance as weak supervision during early curation and information extraction steps, followed by iterative cleaning to improve consistency and thematic diversity. After dataset construction, we build multiple text representations and compare classical machine learning classifiers under a fixed experimental protocol with an isolated test set. Finally, we perform a post-hoc data leakage verification on the test evaluation and compare the best ML classifier with an LLM-based classifier on the same test articles.
+
+\subsection{Data acquisition and crawling}
+
+Article collection was supported by a dedicated crawling system (\texttt{collector\_noticias/}) implemented in Python. The crawler is configuration-driven, with per-portal extraction rules for listing pages and article pages, and it extracts structured fields such as portal name, title, optional subtitle, full text, URL, and publication date. Because news portals exhibit heterogeneous date formats, the crawler includes robust date parsing utilities to normalize publication dates when available. When a portal does not expose a known upper bound for pagination, the crawler estimates the maximum page number by combining exponential search with binary search, enabling efficient access to deep archives. Collection outputs are stored incrementally as JSON files to facilitate reproducibility and auditing.
+
+\subsection{Weak supervision, validation, and dataset construction}
+
+Large language model assistance was used during dataset curation as weak supervision and to support auxiliary extraction of fraud-related attributes from raw news content. These outputs were treated as an initial signal rather than as final ground truth, and the dataset was iteratively validated and cleaned to address common issues in automated annotation, such as inconsistent entity formatting and occasional missing metadata.
+
+The final dataset contains 1,764 Brazilian Portuguese news articles collected from 33 portals between 2020 and 2025, with 882 fraud-related articles (positive class) and 882 non-fraud articles (negative class). Since the initial corpus was fraud-focused, non-fraud news were incorporated to enable supervised binary classification, and negative instances were selected via stratified sampling to improve coverage and reduce spurious correlations. During curation, we also mitigated thematic concentration by reducing the dominance of a single highly recurrent case, decreasing its share from 20.57\% to 5.87\%.
+
+For model development and evaluation, the dataset was partitioned into training (1,128 articles), development/validation (282 articles), and test (353 articles) subsets. The test set was kept isolated during model selection and used only for final evaluation and auxiliary post-hoc analyses. After the final evaluation, a post-hoc check identified exact duplicates between training and test; after removing these duplicates, the clean test set contains 334 articles.
+
+\begin{table}[h]
+\caption{Dataset Split Used in the Experiments}
+\label{tab:datasplit}
+\centering
+\begin{tabular}{lccc}
+\toprule
+Subset & Articles & Fraud & Non-fraud \\
+\midrule
+Total & 1764 & 882 & 882 \\
+Training & 1128 & 564 & 564 \\
+Development & 282 & 141 & 141 \\
+Test (initial) & 353 & 176 & 177 \\
+Test (clean) & 334 & 175 & 159 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Dataset characterization}
+
+Before training, we performed exploratory analysis to better understand the corpus and to detect potential sources of bias. We summarize overall dataset statistics (Fig. \ref{fig:summary}), inspect the distribution of fraud categories (Fig. \ref{fig:tipos}), and quantify source concentration across portals (Fig. \ref{fig:pizza}). We also analyze named entity frequency patterns, including the most mentioned companies and professional roles (Figs. \ref{fig:empresas} and \ref{fig:cargos}), inspect temporal trends in the subset of articles with valid dates (Fig. \ref{fig:years}), and describe textual density through word-count distributions (Fig. \ref{fig:size}). The general dataset summary can be seen in Fig. \ref{fig:summary}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/01_tabela_resumo_geral.png}
+    \caption{Statistical summary of the dataset, including counts of articles, unique entities, and sources.}
+    \label{fig:summary}
+\end{figure}
+
+\subsubsection{Fraud type distribution}
+
+We analyze the frequency of fraud categories in the dataset. Fig. \ref{fig:tipos} show a class imbalance, where a small number of fraud types dominate the dataset.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/03_tipos_fraudes.png}
+    \caption{Distribution of fraud categories showing a class imbalance, with a few types dominating the dataset.}
+    \label{fig:tipos}
+\end{figure}
+
+\subsubsection{Source distribution}
+
+We investigate the distribution of articles across news portals. In Fig. \ref{fig:pizza} is shown that two portals account for most of the dataset, indicating source concentration.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/10_pizza_portais.png}
+    \caption{Source distribution by news portal, highlighting the concentration of articles from two primary publishers.}
+    \label{fig:pizza}
+\end{figure}
+
+\subsubsection{Named entity distribution}
+
+We analyze the most frequently mentioned companies and roles (positions). This helps identify key actors involved in fraud-related narratives. Fig. \ref{fig:empresas} show the companies that appeared the most, while Fig. \ref{fig:cargos} show the roles/positions of the persons involved in the news.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/04_empresas_mencionadas.png}
+    \caption{Frequency of the most mentioned companies and organizations within the fraud-related news articles.}
+    \label{fig:empresas}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/05_cargos_mencionados.png}
+    \caption{Distribution of professional roles and positions held by individuals mentioned in the dataset.}
+    \label{fig:cargos}
+\end{figure}
+
+\subsubsection{Temporal analysis}
+
+In Fig. \ref{fig:years} the number of articles per year is analyzed to identify temporal patterns in fraud reporting. On this plot, only the articles with the date available are considered.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/06_distribuicao_temporal_anos.png}
+    \caption{Temporal distribution of articles by year (only instances with valid publication dates included).}
+    \label{fig:years}
+\end{figure}
+
+\subsubsection{Textual characteristics}
+
+We analyze article length (in words) distribution in Fig. \ref{fig:size}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{Figures/07_distribuicao_tamanho_artigos.png}
+    \caption{Distribution of article lengths measured by word count, showing the textual density of the news corpus.}
+    \label{fig:size}
+\end{figure}
+
+
+\subsection{Preprocessing and representations}
+
+The preprocessing pipeline extends the exploratory analysis and includes additional steps for normalization, consistency, and representation learning.\footnote{Code available on github.com/Paulo-Marcos-Assis/Applied\_ML} For sparse vectorization, all text is converted to lowercase and cleaned to remove HTML artifacts, URLs, excessive whitespace, and Portuguese stopwords, and accent normalization is applied to reduce vocabulary sparsity due to encoding variations. For the structured entity fields used in exploratory analysis, delimiter-aware parsing is applied (commas and semicolons) and duplicate mentions are removed to improve consistency.
+
+To reduce overfitting to recurrent narratives, we also applied bias reduction by removing near-duplicate and highly repetitive positive articles tied to the same case, improving thematic diversity. To prevent leakage, corpus-dependent transformations such as TF-IDF fitting and vocabulary construction are learned exclusively on the training set and then applied to development and test sets.
+
+We evaluate multiple document representations. Sparse lexical features are produced using TF-IDF with unigram and bigram $n$-grams and a limited vocabulary size (10,000 features). Dense document vectors are built using FastText by averaging word embeddings, and sentence-level vectors are extracted from transformer encoders by mean pooling the last hidden states. Traditional stemming and lemmatization were not applied, since aggressive normalization can remove information that is useful for contextual representations.
+
+\subsection{Models, experimental protocol, and evaluation metrics}
+
+We evaluate combinations of representation families and classifiers under a fixed protocol. The representation families include TF-IDF, FastText, and embeddings from Portuguese transformer encoders. The evaluated classifiers are Multinomial Naive Bayes, linear SVM, and Random Forest. No hyperparameter optimization was performed; the objective was to establish reproducible baselines and compare general model behavior under consistent conditions.
+
+To reduce variance in performance estimation, 5-fold cross-validation was employed on the training set during development. Performance was then measured on the development set for model selection, and the final model was evaluated on the held-out test set. We report Accuracy, Precision, Recall, F1-Score, and ROC-AUC. Since fraud detection is sensitive to both false positives and false negatives, F1-Score is used as the primary selection metric.
+
+\subsection{Model comparison and selection on the development set}
+
+We evaluated 18 combinations involving vectorization methods and classifiers. Table~\ref{tab:comparison} presents all evaluated models ranked by F1-Score on the development set.
+
+\begin{table*}[ht]
+\caption{Comparison Between Evaluated Models}
+\label{tab:comparison}
+\centering
+\begin{tabular}{llllllll}
+\toprule
+Rank & Vectorization & Classifier & F1-Score & Accuracy & Precision & Recall & ROC-AUC \\
+\midrule
+1 & TF-IDF & SVM & \textbf{0.9783} & \textbf{0.9787} & \textbf{1.0000} & \textbf{0.9574} & \textbf{0.9923} \\
+2 & TF-IDF & Naive Bayes & \underline{0.9565} & \underline{0.9574} & \underline{0.9778} & 0.9362 & 0.9809 \\
+3 & TF-IDF & Random Forest & 0.9537 & 0.9539 & 0.9571 & \underline{0.9504} & \underline{0.9901} \\
+4 & BERT-Large & SVM & 0.9416 & 0.9433 & 0.9699 & 0.9149 & 0.9874 \\
+5 & BERT-Base & SVM & 0.9324 & 0.9326 & 0.9357 & 0.9291 & 0.9783 \\
+6 & FastText & Random Forest & 0.9304 & 0.9326 & 0.9621 & 0.9007 & 0.9794 \\
+7 & BERT-Base & Random Forest & 0.9203 & 0.9220 & 0.9407 & 0.9007 & 0.9749 \\
+8 & FastText & SVM & 0.9170 & 0.9184 & 0.9338 & 0.9007 & 0.9671 \\
+9 & Albertina-Large & SVM & 0.9158 & 0.9184 & 0.9470 & 0.8865 & 0.9689 \\
+10 & Albertina-Base & SVM & 0.9143 & 0.9149 & 0.9209 & 0.9078 & 0.9652 \\
+11 & Albertina-Base & Random Forest & 0.9124 & 0.9149 & 0.9398 & 0.8865 & 0.9632 \\
+12 & BERT-Large & Random Forest & 0.8978 & 0.9007 & 0.9248 & 0.8723 & 0.9658 \\
+13 & BERT-Base & Naive Bayes & 0.8788 & 0.8865 & 0.9431 & 0.8227 & 0.9316 \\
+14 & FastText & Naive Bayes & 0.8633 & 0.8652 & 0.8759 & 0.8511 & 0.9381 \\
+15 & Albertina-Large & Random Forest & 0.8273 & 0.8298 & 0.8394 & 0.8156 & 0.9284 \\
+16 & Albertina-Large & Naive Bayes & 0.7647 & 0.7730 & 0.7939 & 0.7376 & 0.8285 \\
+17 & BERT-Large & Naive Bayes & 0.7333 & 0.7447 & 0.7674 & 0.7021 & 0.7938 \\
+18 & Albertina-Base & Naive Bayes & 0.3483 & 0.5887 & 0.8378 & 0.2199 & 0.6027 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The baseline model is defined as TF-IDF vectorization combined with a Multinomial Naive Bayes classifier, using $n$-grams of order 1--2 and a maximum of 10,000 features.
+
+\begin{table}[h]
+\caption{Baseline Model Results (TF-IDF + Naive Bayes)}
+\label{tab:baseline}
+\centering
+\begin{tabular}{lc}
+\toprule
+Metric & Value \\
+\midrule
+Accuracy & 0.9574 \\
+Precision & 0.9778 \\
+Recall & 0.9362 \\
+F1-Score & 0.9565 \\
+ROC-AUC & 0.9809 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The baseline already achieved strong performance across all evaluation metrics, indicating that the dataset contains clear textual patterns associated with fraud-related content.
+
+\subsection{Best model results}
+
+Among all evaluated combinations, the best-performing model was TF-IDF combined with a linear SVM classifier.
+
+\subsubsection{Development Set Results}
+
+\begin{table}[h]
+\caption{TF-IDF + SVM Results on Development Set}
+\label{tab:devresults}
+\centering
+\begin{tabular}{lc}
+\toprule
+Metric & Value \\
+\midrule
+Accuracy & 0.9787 \\
+Precision & 1.0000 \\
+Recall & 0.9574 \\
+F1-Score & 0.9783 \\
+ROC-AUC & 0.9923 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The model achieved perfect precision on the development set, meaning that no non-fraud article was incorrectly classified as fraud.
+
+\subsection{Final test evaluation and data leakage verification}
+
+The best model was evaluated on the held-out test set (353 examples). Table~\ref{tab:testresults_initial} reports the initial test metrics before any post-hoc verification. After this evaluation, a data leakage check identified duplicates shared across training and test. Table~\ref{tab:leakage_duplicates} summarizes the main duplicate criteria used in this verification. For the final reported evaluation, we removed the 19 exact text duplicates (5.38\% of the test set) and repeated the evaluation on the resulting clean test set of 334 examples (Table~\ref{tab:testresults}).
+
+\begin{table}[h]
+\caption{TF-IDF + SVM Results on Initial Test Set}
+\label{tab:testresults_initial}
+\centering
+\begin{tabular}{lc}
+\toprule
+Metric & Value \\
+\midrule
+Accuracy & 0.9717 \\
+Precision & 0.9826 \\
+Recall & 0.9602 \\
+F1-Score & 0.9713 \\
+ROC-AUC & 0.9922 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{Duplicates Identified Across Training and Test}
+\label{tab:leakage_duplicates}
+\centering
+\begin{tabular}{lcc}
+\toprule
+Match criterion & Count & \% of test set \\
+\midrule
+Exact text match & 19 & 5.38\% \\
+Title match & 8 & 2.36\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\caption{TF-IDF + SVM Results on Clean Test Set}
+\label{tab:testresults}
+\centering
+\begin{tabular}{lc}
+\toprule
+Metric & Value \\
+\midrule
+Accuracy & 0.9701 \\
+Precision & 0.9825 \\
+Recall & 0.9600 \\
+F1-Score & 0.9711 \\
+ROC-AUC & 0.9921 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results on the clean test set remained very close to the development results, suggesting strong generalization performance and low overfitting even after correcting for the detected leakage.
+
+\subsection{Comparison with LLM classification on the test set}
+
+As an additional comparison, we evaluated an LLM-based classifier on the initial 353-example test set used in the first ML evaluation, before duplicate removal. Using an Ollama server and the \texttt{qwen2.5:7b} model, we prompted the LLM to classify each test article as fraud-related or not. For this experiment, the text provided to the LLM corresponded to the preprocessed version used for sparse vectorization (with stopwords removed), which can disadvantage the LLM compared to using raw text. The LLM successfully evaluated 340 of 353 examples, with 13 timeouts. For consistency, we report the TF-IDF + SVM metrics on the same initial test set. Table~\ref{tab:llm_vs_ml} summarizes the comparative results.
+
+\begin{table}[h]
+\caption{Comparison Between TF-IDF + SVM and an LLM Classifier on the Initial Test Set (LLM evaluated 340/353 examples)}
+\label{tab:llm_vs_ml}
+\centering
+\begin{tabular}{lcc}
+\toprule
+Metric & TF-IDF + SVM & LLM (qwen2.5:7b) \\
+\midrule
+Accuracy & 0.9717 & 0.7559 \\
+Precision & 0.9826 & 0.9894 \\
+Recall & 0.9602 & 0.5314 \\
+F1-Score & 0.9713 & 0.6914 \\
+ROC-AUC & 0.9922 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Results and Discussion}
+
+The experiments reveal several important findings. First, TF-IDF-based approaches consistently outperformed transformer-based embeddings such as BERT and Albertina, and the top-ranked models all used TF-IDF vectorization. Second, SVM was the strongest classifier overall, and the TF-IDF + SVM combination achieved the highest development F1-Score (0.9783) as well as perfect precision on the development set. Third, Naive Bayes performed competitively with TF-IDF but degraded substantially when paired with dense embedding representations. Larger transformer encoders did not necessarily improve performance, suggesting that sparse lexical representations remain highly effective for this specialized news classification setting.
+
+Beyond model comparison, the preprocessing and curation stages played an important role. Reducing thematic concentration in the positive class and keeping an isolated test set improved confidence that performance reflects generalization rather than memorization of a small number of recurring cases. The post-hoc leakage verification and the comparison against an LLM classifier further contextualize the final results.
+
+\section{Limitations}
+
+Some limitations of this work include:
+
+\begin{itemize}
+    \item Relatively limited dataset size
+    \item Focus exclusively on Brazilian Portuguese news
+    \item Binary classification only
+    \item Absence of hyperparameter optimization
+\end{itemize}
+
+Additionally, transformer-based approaches may require larger datasets or fine-tuning strategies to outperform classical methods.
+
+\section{Conclusion}
+
+This work presented the first machine learning experiments for automatic fraud detection in Brazilian news articles.
+
+A baseline model based on TF-IDF and Naive Bayes was established and compared against multiple combinations of vectorization techniques and classifiers.
+
+The best-performing approach, TF-IDF combined with SVM, achieved an F1-score of 0.9711 on the final clean test set and demonstrated excellent generalization performance.
+
+The results indicate that classical NLP techniques remain strong alternatives for domain-specific text classification tasks, especially when datasets are relatively small and highly specialized.
+
+\section{Future Work}
+
+% TO BE FILLED
+
+Future work includes improving model robustness and expanding downstream analysis capabilities. On the modeling side, we plan to explore hyperparameter optimization, ensemble strategies, and fine-tuning approaches for transformer encoders, as well as extending the task beyond binary classification to support multi-class fraud categorization and richer explanations (e.g., SHAP or LIME). In addition, we plan to integrate a company linking module that maps company mentions extracted from fraud-related news to official establishment registries (CNPJ) through textual matching, enabling entity-level aggregation and facilitating investigative workflows that combine unstructured news with structured corporate records.
+
+\section*{Acknowledgment}
+
+% TO BE FILLED
+
+\bibliographystyle{IEEEtran}
+\bibliography{Final}
+
+\end{document}

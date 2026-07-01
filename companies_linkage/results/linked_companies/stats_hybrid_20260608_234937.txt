@@ -1,0 +1,16 @@
+======================================================================
+RELATÓRIO DE VINCULAÇÃO DE EMPRESAS
+======================================================================
+
+Data: 2026-06-08 23:49:37
+Método: HYBRID
+
+total_news: 175
+news_with_companies: 175
+total_companies_mentioned: 1029
+companies_matched: 953
+companies_not_matched: 76
+multiple_matches: 910
+exact_matches: 196
+
+Taxa de sucesso: 92.6%
