@@ -1,0 +1,21 @@
+Naive Bayes (gaussian_nb) + bert_base
+Best params: {'var_smoothing': 1e-09}
+CV F1 (mean): 0.2914
+
+Dev metrics:
+  f1: 0.2921
+  precision: 0.1751
+  recall: 0.8794
+  accuracy: 0.9344
+  pr_auc: 0.1909
+  roc_auc: 0.9527
+
+              precision    recall  f1-score   support
+
+           0       1.00      0.94      0.97      9022
+           1       0.18      0.88      0.29       141
+
+    accuracy                           0.93      9163
+   macro avg       0.59      0.91      0.63      9163
+weighted avg       0.99      0.93      0.96      9163
+

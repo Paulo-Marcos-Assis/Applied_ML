@@ -1,0 +1,92 @@
+[
+  {
+    "vectorization": "tfidf",
+    "classifier": "random_forest",
+    "best_params": {
+      "max_depth": 20,
+      "n_estimators": 100
+    },
+    "cv_f1": 0.6850931347523573,
+    "f1": 0.674074074074074,
+    "precision": 0.7054263565891473,
+    "recall": 0.6453900709219859,
+    "accuracy": 0.9903961584633854,
+    "pr_auc": 0.7250699055606927,
+    "roc_auc": 0.9874860663688918
+  },
+  {
+    "vectorization": "fasttext",
+    "classifier": "random_forest",
+    "best_params": {
+      "max_depth": 20,
+      "n_estimators": 100
+    },
+    "cv_f1": 0.5649704341437616,
+    "f1": 0.5329341317365269,
+    "precision": 0.46113989637305697,
+    "recall": 0.6312056737588653,
+    "accuracy": 0.9829750081850922,
+    "pr_auc": 0.5441049226377488,
+    "roc_auc": 0.9812137705938673
+  },
+  {
+    "vectorization": "bert_base",
+    "classifier": "random_forest",
+    "best_params": {
+      "max_depth": 20,
+      "n_estimators": 200
+    },
+    "cv_f1": 0.6195341148969432,
+    "f1": 0.6060606060606061,
+    "precision": 0.6504065040650406,
+    "recall": 0.5673758865248227,
+    "accuracy": 0.9886500054567281,
+    "pr_auc": 0.6474923069971427,
+    "roc_auc": 0.9847166343579368
+  },
+  {
+    "vectorization": "bert_large",
+    "classifier": "random_forest",
+    "best_params": {
+      "max_depth": 20,
+      "n_estimators": 100
+    },
+    "cv_f1": 0.5571365810461307,
+    "f1": 0.48826291079812206,
+    "precision": 0.7222222222222222,
+    "recall": 0.36879432624113473,
+    "accuracy": 0.9881043326421478,
+    "pr_auc": 0.5712540995737752,
+    "roc_auc": 0.9699925792114155
+  },
+  {
+    "vectorization": "albertina_base",
+    "classifier": "random_forest",
+    "best_params": {
+      "max_depth": 20,
+      "n_estimators": 200
+    },
+    "cv_f1": 0.5193993805705429,
+    "f1": 0.4854368932038835,
+    "precision": 0.7692307692307693,
+    "recall": 0.3546099290780142,
+    "accuracy": 0.988431736330896,
+    "pr_auc": 0.5575393524623886,
+    "roc_auc": 0.9425525626089732
+  },
+  {
+    "vectorization": "albertina_large",
+    "classifier": "random_forest",
+    "best_params": {
+      "max_depth": 20,
+      "n_estimators": 200
+    },
+    "cv_f1": 0.40774278558706173,
+    "f1": 0.3595505617977528,
+    "precision": 0.8648648648648649,
+    "recall": 0.22695035460992907,
+    "accuracy": 0.9875586598275674,
+    "pr_auc": 0.5823718878422172,
+    "roc_auc": 0.9571944702547437
+  }
+]

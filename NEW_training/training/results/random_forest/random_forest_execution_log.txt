@@ -1,0 +1,121 @@
+======================================================================
+TASK 5c — Random Forest (6 vetorizações, class_weight=balanced)
+======================================================================
+
+============================================================
+[1/6] RandomForest + tfidf (sparse)
+============================================================
+  Train: (36652, 10000) | Dev: (9163, 10000)
+  Train pos=562 neg=36090
+  GridSearchCV: 6 candidates × 5 folds = 30 fits
+Fitting 5 folds for each of 6 candidates, totalling 30 fits
+  Best params: {'max_depth': 20, 'n_estimators': 100}
+  CV F1 (mean): 0.6851
+  Predicting on dev...
+  Dev metrics:
+    f1: 0.6741
+    precision: 0.7054
+    recall: 0.6454
+    accuracy: 0.9904
+    pr_auc: 0.7251
+    roc_auc: 0.9875
+  [1/6] CONCLUÍDO — F1=0.6741
+
+============================================================
+[2/6] RandomForest + fasttext (dense)
+============================================================
+  Train: (36652, 300) | Dev: (9163, 300)
+  Train pos=562 neg=36090
+  GridSearchCV: 6 candidates × 5 folds = 30 fits
+Fitting 5 folds for each of 6 candidates, totalling 30 fits
+  Best params: {'max_depth': 20, 'n_estimators': 100}
+  CV F1 (mean): 0.5650
+  Predicting on dev...
+  Dev metrics:
+    f1: 0.5329
+    precision: 0.4611
+    recall: 0.6312
+    accuracy: 0.9830
+    pr_auc: 0.5441
+    roc_auc: 0.9812
+  [2/6] CONCLUÍDO — F1=0.5329
+
+============================================================
+[3/6] RandomForest + bert_base (dense)
+============================================================
+  Train: (36652, 768) | Dev: (9163, 768)
+  Train pos=562 neg=36090
+  GridSearchCV: 6 candidates × 5 folds = 30 fits
+Fitting 5 folds for each of 6 candidates, totalling 30 fits
+  Best params: {'max_depth': 20, 'n_estimators': 200}
+  CV F1 (mean): 0.6195
+  Predicting on dev...
+  Dev metrics:
+    f1: 0.6061
+    precision: 0.6504
+    recall: 0.5674
+    accuracy: 0.9887
+    pr_auc: 0.6475
+    roc_auc: 0.9847
+  [3/6] CONCLUÍDO — F1=0.6061
+
+============================================================
+[4/6] RandomForest + bert_large (dense)
+============================================================
+  Train: (36652, 1024) | Dev: (9163, 1024)
+  Train pos=562 neg=36090
+  GridSearchCV: 6 candidates × 5 folds = 30 fits
+Fitting 5 folds for each of 6 candidates, totalling 30 fits
+  Best params: {'max_depth': 20, 'n_estimators': 100}
+  CV F1 (mean): 0.5571
+  Predicting on dev...
+  Dev metrics:
+    f1: 0.4883
+    precision: 0.7222
+    recall: 0.3688
+    accuracy: 0.9881
+    pr_auc: 0.5713
+    roc_auc: 0.9700
+  [4/6] CONCLUÍDO — F1=0.4883
+
+============================================================
+[5/6] RandomForest + albertina_base (dense)
+============================================================
+  Train: (36652, 768) | Dev: (9163, 768)
+  Train pos=562 neg=36090
+  GridSearchCV: 6 candidates × 5 folds = 30 fits
+Fitting 5 folds for each of 6 candidates, totalling 30 fits
+  Best params: {'max_depth': 20, 'n_estimators': 200}
+  CV F1 (mean): 0.5194
+  Predicting on dev...
+  Dev metrics:
+    f1: 0.4854
+    precision: 0.7692
+    recall: 0.3546
+    accuracy: 0.9884
+    pr_auc: 0.5575
+    roc_auc: 0.9426
+  [5/6] CONCLUÍDO — F1=0.4854
+
+============================================================
+[6/6] RandomForest + albertina_large (dense)
+============================================================
+  Train: (36652, 1536) | Dev: (9163, 1536)
+  Train pos=562 neg=36090
+  GridSearchCV: 6 candidates × 5 folds = 30 fits
+Fitting 5 folds for each of 6 candidates, totalling 30 fits
+  Best params: {'max_depth': 20, 'n_estimators': 200}
+  CV F1 (mean): 0.4077
+  Predicting on dev...
+  Dev metrics:
+    f1: 0.3596
+    precision: 0.8649
+    recall: 0.2270
+    accuracy: 0.9876
+    pr_auc: 0.5824
+    roc_auc: 0.9572
+  [6/6] CONCLUÍDO — F1=0.3596
+
+======================================================================
+TASK 5c CONCLUÍDA — Random Forest
+======================================================================

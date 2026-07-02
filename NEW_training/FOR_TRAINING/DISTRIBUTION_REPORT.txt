@@ -1,0 +1,37 @@
+======================================================================
+RELATÓRIO DE DISTRIBUIÇÃO — CONSOLIDATED_IMBALANCED.csv
+======================================================================
+
+Total de exemplos: 57,271
+Positivos (fraude=1): 881 (1.54%)
+Negativos (fraude=0): 56,390 (98.46%)
+Razão de desbalanceamento: 1:64.0
+
+Distribuição por portal (top 20):
+  ndmais.com.br                             pos=  410  neg= 45036  total= 45446
+  www.nsctotal.com.br                       pos=   47  neg= 10559  total= 10606
+  www.bbc.com                               pos=   14  neg=   382  total=   396
+  iclnoticias.com.br                        pos=  261  neg=     0  total=   261
+  www.gazetadopovo.com.br                   pos=    9  neg=   155  total=   164
+  www.cartacapital.com.br                   pos=   10  neg=   138  total=   148
+  jornalconexao.com.br                      pos=   40  neg=    36  total=    76
+  g1.globo.com                              pos=   62  neg=     0  total=    62
+  www1.folha.uol.com.br                     pos=    3  neg=    44  total=    47
+  agenciabrasil.ebc.com.br                  pos=    1  neg=    13  total=    14
+  olharsc.com.br                            pos=    0  neg=     9  total=     9
+  f5.folha.uol.com.br                       pos=    1  neg=     7  total=     8
+  agoralaguna.com.br                        pos=    7  neg=     0  total=     7
+  www.mpsc.mp.br                            pos=    5  neg=     0  total=     5
+  guia.folha.uol.com.br                     pos=    0  neg=     3  total=     3
+  especiais.gazetadopovo.com.br             pos=    1  neg=     1  total=     2
+  www.assinecarta.com.br                    pos=    0  neg=     2  total=     2
+  pc.sc.gov.br                              pos=    2  neg=     0  total=     2
+  assinaturas.gazetadopovo.com.br           pos=    0  neg=     2  total=     2
+  intranet.mpsc.mp.br                       pos=    1  neg=     0  total=     1
+
+Distribuição por label:
+  label=0: 56,390 (98.46%)
+  label=1: 881 (1.54%)
+
+Schema: url, title, text, label, portal, date_publication
+======================================================================

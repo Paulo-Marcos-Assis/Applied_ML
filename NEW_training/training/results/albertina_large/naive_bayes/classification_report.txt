@@ -1,0 +1,21 @@
+Naive Bayes (gaussian_nb) + albertina_large
+Best params: {'var_smoothing': 1e-09}
+CV F1 (mean): 0.1982
+
+Dev metrics:
+  f1: 0.1891
+  precision: 0.1126
+  recall: 0.5887
+  accuracy: 0.9223
+  pr_auc: 0.1071
+  roc_auc: 0.8880
+
+              precision    recall  f1-score   support
+
+           0       0.99      0.93      0.96      9022
+           1       0.11      0.59      0.19       141
+
+    accuracy                           0.92      9163
+   macro avg       0.55      0.76      0.57      9163
+weighted avg       0.98      0.92      0.95      9163
+
